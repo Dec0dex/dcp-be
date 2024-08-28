@@ -4,7 +4,6 @@ import { defaultTheme } from '@vuepress/theme-default';
 import { defineUserConfig } from 'vuepress';
 import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
 import { en as enThemeConfig } from './config/theme/en.config.mjs';
-import { vi as viThemeConfig } from './config/theme/vi.config.mjs';
 
 export default defineUserConfig({
   lang: 'en-US',
@@ -29,7 +28,6 @@ export default defineUserConfig({
     docsDir: 'docs',
     locales: {
       '/': enThemeConfig,
-      '/vi/': viThemeConfig,
     },
   }),
   plugins: [
