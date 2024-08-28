@@ -9,3 +9,4 @@ if [ -n "$changed_files" ]; then
 else
   echo "${GREEN}No TS/JS files have been changed. Skipping tests.${NC}"
 fi
+pnpm build
