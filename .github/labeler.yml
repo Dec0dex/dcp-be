@@ -1,0 +1,33 @@
+# Add 'documentation' label to any changes within 'docs' folder or any subfolders
+documentation:
+  - head-branch: ['^documentation', 'documentation']
+  - any:
+    - changed-files:
+      - any-glob-to-any-file: docs/**
+
+feature:
+- head-branch: ['^feature', 'feature']
+
+build:
+- head-branch: ['^build', 'build']
+
+chore:
+- head-branch: ['^chore', 'chore']
+
+hotfix:
+- head-branch: ['^hotfix', 'hotfix']
+
+bugfix:
+- head-branch: ['^bugfix', 'bugfix']
+
+merge:
+- head-branch: ['^merge', 'merge']
+
+refactor:
+- head-branch: ['^refactor', 'refactor']
+
+revert:
+- head-branch: ['^revert', 'revert']
+
+style:
+- head-branch: ['^style', 'style']
