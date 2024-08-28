@@ -17,7 +17,7 @@ Except for Hotfixes, we want our codes to follow a one-way merge starting from *
 ## Branch names must be matched by the following regex
 
 ```js
-/^(feature|bugfix|hotfix|chore|release|merge)\.([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*)$/;
+/^(build|chore|hotfix|bugfix|documentation|merge|feature|refactor|revert|style)\.([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*)$/;
 ```
 
 ## Format
