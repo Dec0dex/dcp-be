@@ -153,7 +153,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
         }
       : {
           status: HttpStatus.INTERNAL_SERVER_ERROR,
-          message: this.i18n.t('common.error.internal_server_error'),
+          message: this.i18n.t(ErrorCode.E0500),
         };
     const errorRes = {
       timestamp: new Date().toISOString(),
@@ -178,7 +178,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       timestamp: new Date().toISOString(),
       statusCode: status,
       error: STATUS_CODES[status],
-      message: this.i18n.t('common.error.entity_not_found'),
+      message: this.i18n.t(ErrorCode.E0404),
     } as unknown as ErrorDto;
 
     this.logger.debug(error);

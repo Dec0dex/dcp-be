@@ -11,7 +11,9 @@
     },
     "collectCoverageFrom": [
       "**/*.(t|j)s",
-      "!**/*.spec.(t|j)s"
+      "!**/*.spec.(t|j)s",
+      "!src/database/migrations/**",
+      "!src/database/seeds/**"
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
