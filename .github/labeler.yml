@@ -1,58 +1,30 @@
-# Apply 'documentation' label if any files in 'docs' folder are changed
+# Add 'documentation' label to any changes within 'docs' folder or any subfolders
 documentation:
-  - changed-files:
-      - docs/**
+- head-branch: ['^documentation', 'documentation']
 
-# Apply 'feature' label if branch name starts with 'feature'
 feature:
-  - head-branch:
-      - '^feature'
-      - 'feature'
+- head-branch: ['^feature', 'feature']
 
-# Apply 'build' label if branch name starts with 'build'
 build:
-  - head-branch:
-      - '^build'
-      - 'build'
+- head-branch: ['^build', 'build']
 
-# Apply 'chore' label if branch name starts with 'chore'
 chore:
-  - head-branch:
-      - '^chore'
-      - 'chore'
+- head-branch: ['^chore', 'chore']
 
-# Apply 'hotfix' label if branch name starts with 'hotfix'
 hotfix:
-  - head-branch:
-      - '^hotfix'
-      - 'hotfix'
+- head-branch: ['^hotfix', 'hotfix']
 
-# Apply 'bugfix' label if branch name starts with 'bugfix'
 bugfix:
-  - head-branch:
-      - '^bugfix'
-      - 'bugfix'
+- head-branch: ['^bugfix', 'bugfix']
 
-# Apply 'merge' label if branch name starts with 'merge'
 merge:
-  - head-branch:
-      - '^merge'
-      - 'merge'
+- head-branch: ['^merge', 'merge']
 
-# Apply 'refactor' label if branch name starts with 'refactor'
 refactor:
-  - head-branch:
-      - '^refactor'
-      - 'refactor'
+- head-branch: ['^refactor', 'refactor']
 
-# Apply 'revert' label if branch name starts with 'revert'
 revert:
-  - head-branch:
-      - '^revert'
-      - 'revert'
+- head-branch: ['^revert', 'revert']
 
-# Apply 'style' label if branch name starts with 'style'
 style:
-  - head-branch:
-      - '^style'
-      - 'style'
+- head-branch: ['^style', 'style']
