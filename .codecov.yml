@@ -7,6 +7,10 @@ codecov:
     wait_for_ci: yes
   max_report_age: off
 
+ignore:
+  - "src/database/migrations/**"
+  - "src/database/seeds/**"
+
 coverage:
   precision: 2
   round: nearest
