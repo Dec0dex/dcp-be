@@ -68,6 +68,28 @@ describe('MailerCustomLogger', () => {
     );
   });
 
+  it('should log info messages when info level is included', () => {
+    mailerLogger.log('Test info message');
+    expect(mockLogger.log).toHaveBeenCalledWith('Test info message');
+  });
+
+  it('should not log info messages when info level is not included included', () => {
+    const mailerLoggerWithoutInfo = MailerCustomLogger.getInstance(['trace']);
+    mailerLoggerWithoutInfo.log('Test info message');
+    expect(mockLogger.log).not.toHaveBeenCalled();
+  });
+
+  it('should log level if level is supported', () => {
+    mailerLogger.level('trace');
+    expect(mockLogger.log).toHaveBeenCalledWith('level: trace');
+  });
+
+  it('should not log level if level is not supported', () => {
+    const mailerLoggerWithoutInfo = MailerCustomLogger.getInstance(['info']);
+    mailerLoggerWithoutInfo.level('trace');
+    expect(mockLogger.log).toHaveBeenCalledWith('UnsupportedLevel: trace');
+  });
+
   it('should not log debug messages when debug level is not included', () => {
     const mailerLoggerWithoutDebug = MailerCustomLogger.getInstance(['info']);
     mailerLoggerWithoutDebug.debug({ tnx: 'client' }, 'Test debug message');

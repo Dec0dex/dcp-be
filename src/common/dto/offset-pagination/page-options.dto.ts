@@ -9,6 +9,13 @@ import {
   StringFieldOptional,
 } from '@/decorators/field.decorators';
 
+interface PageOptionsDtoParams {
+  limit?: number;
+  page?: number;
+  q?: string; // Can be a string, number, or object
+  order?: Order;
+}
+
 export class PageOptionsDto {
   @NumberFieldOptional({
     minimum: 1,
@@ -32,5 +39,17 @@ export class PageOptionsDto {
 
   get offset() {
     return this.page ? (this.page - 1) * this.limit : 0;
+  }
+
+  constructor({
+    limit = DEFAULT_PAGE_LIMIT,
+    page = DEFAULT_CURRENT_PAGE,
+    q,
+    order = Order.ASC,
+  }: PageOptionsDtoParams = {}) {
+    this.limit = limit;
+    this.page = page;
+    this.q = q;
+    this.order = order;
   }
 }
