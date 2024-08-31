@@ -21,9 +21,9 @@ class MailerCustomLogger implements NodeMailerLogger {
 
   level(level: LoggerLevel): void {
     if (this.logLevels.includes(level)) {
-      this.logger.log(`khuong level: ${level}`);
+      this.logger.log(`level: ${level}`);
     }
-    this.logger.log(`khuong level: ${level}`);
+    this.logger.log(`UnsupportedLevel: ${level}`);
   }
 
   trace(...params: any[]): void {

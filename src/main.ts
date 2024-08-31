@@ -19,7 +19,7 @@ import { GlobalExceptionFilter } from './filters/global-exception.filter';
 import { AuthGuard } from './guards/auth.guard';
 import setupSwagger from './utils/setup-swagger';
 
-async function bootstrap() {
+export async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     bufferLogs: true,
   });

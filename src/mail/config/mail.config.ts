@@ -12,7 +12,7 @@ import {
 import validateConfig from '../../utils/validate-config';
 import { MailConfig } from './mail-config.type';
 
-class EnvironmentVariablesValidator {
+export class EnvironmentVariablesValidator {
   @IsString()
   MAIL_HOST: string;
 

@@ -16,7 +16,7 @@ const PinoLevelToGoogleLoggingSeverityLookup = Object.freeze({
   fatal: 'CRITICAL',
 });
 
-const genReqId: GenReqId = (
+export const genReqId: GenReqId = (
   req: IncomingMessage,
   res: ServerResponse<IncomingMessage>,
 ) => {

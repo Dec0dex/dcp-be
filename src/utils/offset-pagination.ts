@@ -18,7 +18,7 @@ export async function paginate<T>(
 
   let count = -1;
 
-  if (!options?.skipCount) {
+  if (!options?.skipCount && !options?.takeAll) {
     count = await builder.getCount();
   }
 

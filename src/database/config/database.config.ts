@@ -11,7 +11,7 @@ import {
 } from 'class-validator';
 import { DatabaseConfig } from './database-config.type';
 
-class EnvironmentVariablesValidator {
+export class EnvironmentVariablesValidator {
   @ValidateIf((envValues) => envValues.DATABASE_URL)
   @IsString()
   DATABASE_URL: string;

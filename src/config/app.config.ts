@@ -14,7 +14,7 @@ import process from 'node:process';
 import validateConfig from '../utils/validate-config';
 import { AppConfig } from './app-config.type';
 
-class EnvironmentVariablesValidator {
+export class EnvironmentVariablesValidator {
   @IsEnum(Environment)
   @IsOptional()
   NODE_ENV: Environment;
@@ -83,7 +83,7 @@ export default registerAs<AppConfig>('app', () => {
   };
 });
 
-function getCorsOrigin() {
+export function getCorsOrigin() {
   const corsOrigin = process.env.APP_CORS_ORIGIN;
   if (corsOrigin === 'true') return true;
   if (corsOrigin === '*') return '*';
