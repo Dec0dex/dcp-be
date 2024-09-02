@@ -9,9 +9,9 @@ function setupSwagger(app: INestApplication) {
 
   const config = new DocumentBuilder()
     .setTitle(appName)
-    .setDescription('A boilerplate project')
+    .setDescription('Developer Community Platform API')
     .setVersion('1.0')
-    .setContact('Company Name', 'https://example.com', 'contact@company.com')
+    .setContact('Dec0dex', 'https://decodex.net', 'office@decodex.net')
     .addBearerAuth()
     .addApiKey({ type: 'apiKey', name: 'Api-Key', in: 'header' }, 'Api-Key')
     .addServer(
@@ -19,6 +19,7 @@ function setupSwagger(app: INestApplication) {
       'Development',
     )
     .addServer('https://example.com', 'Staging')
+    .addServer('https://example.com', 'Production')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document, {

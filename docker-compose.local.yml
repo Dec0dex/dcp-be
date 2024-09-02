@@ -51,8 +51,8 @@ services:
     volumes:
       - pgadmin_data:/root/.pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: 12345678
+      PGADMIN_DEFAULT_EMAIL: admin@decodex.net
+      PGADMIN_DEFAULT_PASSWORD: Password1!
       PGADMIN_CONFIG_WTF_CSRF_ENABLED: "False"
       PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: "False"
     networks:

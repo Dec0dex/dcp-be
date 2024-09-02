@@ -1,36 +1,60 @@
 import validateConfig from '@/utils/validate-config';
 import { registerAs } from '@nestjs/config';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { AuthConfig } from './auth-config.type';
 
 export class EnvironmentVariablesValidator {
   @IsString()
   @IsNotEmpty()
-  AUTH_JWT_SECRET: string;
+  AUTH_CONNECTION_URL: string;
 
   @IsString()
   @IsNotEmpty()
-  AUTH_JWT_TOKEN_EXPIRES_IN: string;
+  AUTH_KEY: string;
 
   @IsString()
-  AUTH_REFRESH_SECRET: string;
+  @IsOptional()
+  AUTH_GOOGLE_CLIENT_ID: string;
 
   @IsString()
-  @IsNotEmpty()
-  AUTH_REFRESH_TOKEN_EXPIRES_IN: string;
+  @IsOptional()
+  AUTH_GOOGLE_CLIENT_SECRET: string;
 
   @IsString()
-  @IsNotEmpty()
-  AUTH_FORGOT_SECRET: string;
+  @IsOptional()
+  AUTH_FACEBOOK_CLIENT_ID: string;
 
   @IsString()
-  AUTH_FORGOT_TOKEN_EXPIRES_IN: string;
+  @IsOptional()
+  AUTH_FACEBOOK_CLIENT_SECRET: string;
 
   @IsString()
-  AUTH_CONFIRM_EMAIL_SECRET: string;
+  @IsOptional()
+  AUTH_GITHUB_CLIENT_ID: string;
 
   @IsString()
-  AUTH_CONFIRM_EMAIL_TOKEN_EXPIRES_IN: string;
+  @IsOptional()
+  AUTH_GITHUB_CLIENT_SECRET: string;
+
+  @IsString()
+  @IsOptional()
+  AUTH_APPLE_CLIENT_ID: string;
+
+  @IsString()
+  @IsOptional()
+  AUTH_APPLE_KEY_ID: string;
+
+  @IsString()
+  @IsOptional()
+  AUTH_APPLE_PRIVATE_KEY: string;
+
+  @IsString()
+  @IsOptional()
+  AUTH_APPLE_TEAM_ID: string;
+
+  @IsString()
+  @IsOptional()
+  AUTH_ADMIN_USER: string;
 }
 
 export default registerAs<AuthConfig>('auth', () => {
@@ -38,14 +62,35 @@ export default registerAs<AuthConfig>('auth', () => {
   validateConfig(process.env, EnvironmentVariablesValidator);
 
   return {
-    secret: process.env.AUTH_JWT_SECRET,
-    expires: process.env.AUTH_JWT_TOKEN_EXPIRES_IN,
-    refreshSecret:
-      process.env.AUTH_REFRESH_SECRET || process.env.AUTH_JWT_SECRET,
-    refreshExpires: process.env.AUTH_REFRESH_TOKEN_EXPIRES_IN,
-    forgotSecret: process.env.AUTH_FORGOT_SECRET,
-    forgotExpires: process.env.AUTH_FORGOT_TOKEN_EXPIRES_IN,
-    confirmEmailSecret: process.env.AUTH_CONFIRM_EMAIL_SECRET,
-    confirmEmailExpires: process.env.AUTH_CONFIRM_EMAIL_TOKEN_EXPIRES_IN,
+    appInfo: {
+      appName: process.env.APP_NAME,
+      apiDomain: process.env.APP_URL,
+      websiteDomain: process.env.APP_WEB_URL,
+      apiBasePath: `${process.env.API_PREFIX}/auth`,
+      websiteBasePath: '/auth',
+    },
+    social: {
+      google: {
+        clientId: process.env.AUTH_GOOGLE_CLIENT_ID,
+        clientSecret: process.env.AUTH_GOOGLE_CLIENT_SECRET,
+      },
+      github: {
+        clientId: process.env.AUTH_GITHUB_CLIENT_ID,
+        clientSecret: process.env.AUTH_GITHUB_CLIENT_SECRET,
+      },
+      facebook: {
+        clientId: process.env.AUTH_FACEBOOK_CLIENT_ID,
+        clientSecret: process.env.AUTH_FACEBOOK_CLIENT_SECRET,
+      },
+      apple: {
+        clientId: process.env.AUTH_APPLE_CLIENT_ID,
+        keyId: process.env.AUTH_APPLE_KEY_ID,
+        privateKey: process.env.AUTH_APPLE_PRIVATE_KEY,
+        teamId: process.env.AUTH_APPLE_TEAM_ID,
+      },
+    },
+    connectionURI: process.env.AUTH_CONNECTION_URL,
+    apiKey: process.env.AUTH_KEY,
+    adminUser: process.env.AUTH_ADMIN_USER || 'office@decodex.net',
   };
 });

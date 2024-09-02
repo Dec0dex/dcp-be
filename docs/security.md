@@ -8,7 +8,8 @@ Ensuring the security of your application is paramount. This document outlines t
 
 ## Authentication
 
-Authentication is the process of verifying the identity of a user or system. This project uses JSON Web Tokens (JWT) for stateless authentication. Users are required to log in with their credentials, after which they receive a token that must be included in the header of subsequent requests.
+Authentication is the process of verifying the identity of a user or system. This project uses [SuperTokens](https://supertokens.com/) OAuth2 for session. Users are required to log in with their credentials or Social, after which they receive a token that must be included in the header of subsequent requests.
+Refer to [Supertokents Documentation](https://supertokens.com/docs/guides) for mor details
 
 ## Authorization
 

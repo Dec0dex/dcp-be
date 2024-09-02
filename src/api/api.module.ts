@@ -4,6 +4,6 @@ import { HealthModule } from './health/health.module';
 import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [UserModule, HealthModule, AuthModule],
+  imports: [AuthModule.forRootAsync(), UserModule, HealthModule],
 })
 export class ApiModule {}
