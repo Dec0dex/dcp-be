@@ -1,13 +1,6 @@
 import { Uuid } from '@/common/types/common.type';
 import { AbstractEntity } from '@/database/entities/abstract.entity';
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { UserEntity } from './user.entity';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('session')
 export class SessionEntity extends AbstractEntity {
@@ -34,11 +27,11 @@ export class SessionEntity extends AbstractEntity {
   })
   userId: Uuid;
 
-  @JoinColumn({
-    name: 'user_id',
-    referencedColumnName: 'id',
-    foreignKeyConstraintName: 'FK_session_user',
-  })
-  @ManyToOne(() => UserEntity, (user) => user.sessions)
-  user!: UserEntity;
+  // @JoinColumn({
+  //   name: 'user_id',
+  //   referencedColumnName: 'id',
+  //   foreignKeyConstraintName: 'FK_session_user',
+  // })
+  // @ManyToOne(() => UserEntity, user => user.sessions)
+  // user!: UserEntity;
 }

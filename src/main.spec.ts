@@ -17,6 +17,9 @@ import setupSwagger from './utils/setup-swagger';
 // Mock dependencies
 jest.mock('compression');
 jest.mock('helmet');
+jest.mock('supertokens-node', () => ({
+  getAllCORSHeaders: jest.fn().mockReturnValue(['']),
+}));
 jest.mock('./utils/setup-swagger', () => jest.fn());
 jest.mock('./app.module', () => ({
   AppModule: {

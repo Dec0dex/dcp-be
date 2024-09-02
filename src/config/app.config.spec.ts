@@ -11,6 +11,7 @@ describe('App Config', () => {
     process.env.APP_NAME = 'TestApp';
     process.env.APP_URL = 'http://testapp.com';
     process.env.APP_PORT = '8080';
+    process.env.APP_WEB_URL = 'http://web.testapp.com';
     process.env.APP_DEBUG = 'true';
     process.env.API_PREFIX = 'api';
     process.env.APP_FALLBACK_LANGUAGE = 'en';
@@ -28,6 +29,7 @@ describe('App Config', () => {
       url: 'http://testapp.com',
       port: 8080,
       debug: true,
+      webUrl: 'http://web.testapp.com',
       apiPrefix: 'api',
       fallbackLanguage: 'en',
       logLevel: 'info',

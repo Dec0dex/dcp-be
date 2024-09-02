@@ -1,10 +1,30 @@
+import { AppInfo } from 'supertokens-node/types';
+
+export const ConfigInjectionToken = 'AuthConfigIInjectionToken';
+
 export type AuthConfig = {
-  secret: string;
-  expires: string;
-  refreshSecret: string;
-  refreshExpires: string;
-  forgotSecret: string;
-  forgotExpires: string;
-  confirmEmailSecret: string;
-  confirmEmailExpires: string;
+  appInfo: AppInfo;
+  connectionURI: string;
+  apiKey: string;
+  adminUser: string;
+  social: {
+    google: {
+      clientId: string;
+      clientSecret: string;
+    };
+    github: {
+      clientId: string;
+      clientSecret: string;
+    };
+    facebook: {
+      clientId: string;
+      clientSecret: string;
+    };
+    apple: {
+      clientId: string;
+      keyId: string;
+      privateKey: string;
+      teamId: string;
+    };
+  };
 };

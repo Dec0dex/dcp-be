@@ -8,10 +8,8 @@ import {
   DeleteDateColumn,
   Entity,
   Index,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { SessionEntity } from './session.entity';
 
 @Entity('user')
 export class UserEntity extends AbstractEntity {
@@ -50,8 +48,8 @@ export class UserEntity extends AbstractEntity {
   })
   deletedAt: Date;
 
-  @OneToMany(() => SessionEntity, (session) => session.user)
-  sessions?: SessionEntity[];
+  // @OneToMany(() => SessionEntity, session => session.user)
+  // sessions?: SessionEntity[];
 
   @BeforeInsert()
   @BeforeUpdate()

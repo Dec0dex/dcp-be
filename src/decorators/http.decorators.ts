@@ -9,6 +9,7 @@ import {
   ApiBasicAuth,
   ApiBearerAuth,
   ApiCreatedResponse,
+  ApiOAuth2,
   ApiOkResponse,
   ApiOperation,
   ApiResponse,
@@ -19,7 +20,7 @@ import { Public } from './public.decorator';
 import { ApiPaginatedResponse } from './swagger.decorators';
 
 type ApiResponseType = number;
-type ApiAuthType = 'basic' | 'api-key' | 'jwt';
+type ApiAuthType = 'basic' | 'api-key' | 'jwt' | 'oauth2';
 type PaginationType = 'offset' | 'cursor';
 
 interface IApiOptions<T extends Type<any>> {
@@ -107,6 +108,8 @@ export const ApiAuth = (options: IApiAuthOptions = {}): MethodDecorator => {
         return ApiSecurity('Api-Key');
       case 'jwt':
         return ApiBearerAuth();
+      case 'oauth2':
+        return ApiOAuth2(['email']);
     }
   });
 

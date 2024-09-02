@@ -27,6 +27,7 @@ This is a boilerplate for NestJS projects. It is a starting point for building a
 - [NestJS I18n](https://nestjs-i18n.com/)
 - [TypeORM](https://typeorm.io/)
 - [TypeORM Extension](https://typeorm-extension.tada5hi.net/)
+- [SuperTokens](https://supertokens.com/docs/guides)
 - [Nodemailer](https://nodemailer.com/)
 - [NestJS Mailer](https://nest-modules.github.io/mailer/)
 - [Jest](https://jestjs.io/)

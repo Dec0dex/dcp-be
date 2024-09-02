@@ -29,16 +29,6 @@ services:
     networks:
       - dcp-network
 
-  maildev:
-    build:
-      context: .
-      dockerfile: maildev.Dockerfile
-    ports:
-      - ${MAIL_CLIENT_PORT}:1080
-      - ${MAIL_PORT}:1025
-    networks:
-      - dcp-network
-
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
@@ -47,8 +37,8 @@ services:
     volumes:
       - pgadmin_data:/root/.pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: 12345678
+      PGADMIN_DEFAULT_EMAIL: admin@decodex.net
+      PGADMIN_DEFAULT_PASSWORD: Password1!
       PGADMIN_CONFIG_WTF_CSRF_ENABLED: "False"
       PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: "False"
     networks:
