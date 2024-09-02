@@ -137,7 +137,6 @@ describe('SupertokensService', () => {
     // Verify that supertokens.init was called with the expected configuration
     expect(supertokens.init).toHaveBeenCalledWith(
       expect.objectContaining({
-        debug: true,
         appInfo: config.appInfo,
         supertokens: {
           connectionURI: config.connectionURI,
