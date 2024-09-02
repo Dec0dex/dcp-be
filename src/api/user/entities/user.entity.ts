@@ -1,15 +1,14 @@
 import { Uuid } from '@/common/types/common.type';
 import { AbstractEntity } from '@/database/entities/abstract.entity';
-import { hashPassword as hashPass } from '@/utils/password.util';
 import {
-  BeforeInsert,
-  BeforeUpdate,
   Column,
   DeleteDateColumn,
   Entity,
   Index,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Email } from './email.entity';
+import { PhoneNumber } from './phone-number.entity';
 
 @Entity('user')
 export class UserEntity extends AbstractEntity {
@@ -22,24 +21,42 @@ export class UserEntity extends AbstractEntity {
   id!: Uuid;
 
   @Column()
-  @Index('UQ_user_username', {
+  @Index('UQ_user_external_id', {
     where: '"deleted_at" IS NULL',
     unique: true,
   })
-  username!: string;
+  externalId!: string;
 
   @Column()
-  @Index('UQ_user_email', { where: '"deleted_at" IS NULL', unique: true })
-  email!: string;
+  @Index('UQ_user_profile_tag', { where: '"deleted_at" IS NULL', unique: true })
+  profileTag!: string;
 
-  @Column()
-  password!: string;
-
-  @Column({ default: '' })
+  @Column({ default: null })
   bio?: string;
 
-  @Column({ default: '' })
-  image?: string;
+  @Column({ default: null })
+  profileIcon?: string;
+
+  @Column({ default: null })
+  backgroundImage?: string;
+
+  @Column({ default: null })
+  firstName?: string;
+
+  @Column({ default: null })
+  lastName?: string;
+
+  @Column({ default: false })
+  isSuspended!: boolean;
+
+  @Column({ default: true })
+  needsEnrollment!: boolean;
+
+  @Column('jsonb', { nullable: true, default: () => "'[]'" })
+  phoneNumbers?: PhoneNumber[];
+
+  @Column('jsonb', { nullable: true, default: () => "'[]'" })
+  emails?: Email[];
 
   @DeleteDateColumn({
     name: 'deleted_at',
@@ -47,15 +64,4 @@ export class UserEntity extends AbstractEntity {
     default: null,
   })
   deletedAt: Date;
-
-  // @OneToMany(() => SessionEntity, session => session.user)
-  // sessions?: SessionEntity[];
-
-  @BeforeInsert()
-  @BeforeUpdate()
-  async hashPassword() {
-    if (this.password) {
-      this.password = await hashPass(this.password);
-    }
-  }
 }
