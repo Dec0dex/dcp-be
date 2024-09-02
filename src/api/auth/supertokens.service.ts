@@ -26,7 +26,6 @@ export class SupertokensService {
     @Inject() userService: UserService,
   ) {
     supertokens.init({
-      debug: true,
       appInfo: config.appInfo,
       supertokens: {
         connectionURI: config.connectionURI,

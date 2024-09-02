@@ -75,14 +75,19 @@ MAIL_DEFAULT_NAME=No Reply
 MAIL_CLIENT_PORT=1080
 
 ##== Authentication
-AUTH_JWT_SECRET=secret
-AUTH_JWT_TOKEN_EXPIRES_IN=1h
-AUTH_REFRESH_SECRET=secret_for_refresh
-AUTH_REFRESH_TOKEN_EXPIRES_IN=7d
-AUTH_FORGOT_SECRET=secret_for_forgot
-AUTH_FORGOT_TOKEN_EXPIRES_IN=7d
-AUTH_CONFIRM_EMAIL_SECRET=secret_for_confirm_email
-AUTH_CONFIRM_EMAIL_TOKEN_EXPIRES_IN=1d
+AUTH_CONNECTION_URL=
+AUTH_KEY=
+AUTH_GOOGLE_CLIENT_ID=
+AUTH_GOOGLE_CLIENT_SECRET=
+AUTH_FACEBOOK_CLIENT_ID=
+AUTH_FACEBOOK_CLIENT_SECRET=
+AUTH_GITHUB_CLIENT_ID=
+AUTH_GITHUB_CLIENT_SECRET=
+AUTH_APPLE_CLIENT_ID=
+AUTH_APPLE_KEY_ID=
+AUTH_APPLE_PRIVATE_KEY=
+AUTH_APPLE_TEAM_ID=
+AUTH_ADMIN_USER=office@decodex.net
 ```
 
 :::
@@ -142,14 +147,19 @@ For local development, you can use [MailDev](https://github.com/maildev/maildev)
 
 #### Authentication variables
 
-- `AUTH_JWT_SECRET`: The JWT secret key.
-- `AUTH_JWT_TOKEN_EXPIRES_IN`: JWT token expiration time (e.g., `15m`, `1h`, `1d`, `365d`). Should be short for security.
-- `AUTH_REFRESH_SECRET`: The refresh token secret key.
-- `AUTH_REFRESH_TOKEN_EXPIRES_IN`: Refresh token expiration time. Should be long for user convenience.
-- `AUTH_FORGOT_SECRET`: The forgot password token secret key.
-- `AUTH_FORGOT_TOKEN_EXPIRES_IN`: Forgot password token expiration time. Should be short for security.
-- `AUTH_CONFIRM_EMAIL_SECRET`: The email confirmation token secret key.
-- `AUTH_CONFIRM_EMAIL_TOKEN_EXPIRES_IN`: Email confirmation token expiration time. Should be short for security.
+- `AUTH_CONNECTION_URL`: The SuperTokens endpoint
+- `AUTH_KEY`: The SuperTokens key
+- `AUTH_GOOGLE_CLIENT_ID`: Google Social Login OAuth2 Client ID
+- `AUTH_GOOGLE_CLIENT_SECRET`: Google Social Login OAuth2 Client Secret
+- `AUTH_FACEBOOK_CLIENT_ID`: Facebook Social Login OAuth2 Client ID
+- `AUTH_FACEBOOK_CLIENT_SECRET`: Facebook Social Login OAuth2 Client Secret
+- `AUTH_GITHUB_CLIENT_ID`: GitHub Social Login OAuth2 Client ID
+- `AUTH_GITHUB_CLIENT_SECRET`: GitHub Social Login OAuth2 Client Secret
+- `AUTH_APPLE_CLIENT_ID`: Apple Social Login OAuth2 Client ID
+- `AUTH_APPLE_KEY_ID`: Apple Social Login OAuth2 Key ID
+- `AUTH_APPLE_PRIVATE_KEY`: Apple Social Login OAuth2 Private key
+- `AUTH_APPLE_TEAM_ID` Apple Social Login OAuth2 Team ID
+- `AUTH_ADMIN_USER`: The dashboard admin account. The dashboard is accessible on [http://localhost:3000/api/auth/dashboard](http://localhost:3000/api/auth/dashboard)
 
 ### Running the project
 

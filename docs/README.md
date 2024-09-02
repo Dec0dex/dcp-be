@@ -1,6 +1,11 @@
-# NestJS Boilerplate Documentation
+# NestJS Backend for Developer Community Platform
+[![Build Status](https://github.com/Dec0dex/dcp-be/workflows/Docker/badge.svg)](https://github.com/Dec0dex/dcp-be/actions)
+[![codecov](https://codecov.io/gh/Dec0dex/dcp-be/branch/main/graph/badge.svg)](https://codecov.io/gh/Dec0dex/dcp-be)
+[![Latest Release](https://img.shields.io/github/release/Dec0dex/dcp-be.svg)](https://github.com/Dec0dex/dcp-be/releases)
+[![GitHub Package](https://img.shields.io/badge/docker-GitHub%20Packages-blue)](https://github.com/Dec0dex/dcp-be/pkgs/container/dcp-be)
 
-This is a boilerplate for NestJS projects. It is a starting point for building a RESTful API with NestJS.
+
+This is a backend for developer Community Platform.
 
 ## Detail Documentation
 
@@ -18,7 +23,7 @@ This is a boilerplate for NestJS projects. It is a starting point for building a
   - [Clean code Typescript](conventions/clean-code-typescript.md)
   - [Branch conventions](conventions/branch-conventions.md)
   - [Commit conventions](conventions/commit-conventions.md)
-  - [Linting & formatting](conventions/linting.md)
+  - [Linting & formatting](conventions/linting-and-formatting.md)
   
 ## References
 
