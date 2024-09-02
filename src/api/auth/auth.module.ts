@@ -5,13 +5,15 @@ import {
   NestModule,
 } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UserModule } from '../user/user.module';
+import { UserService } from '../user/user.service';
 import { AuthMiddleware } from './auth.middleware';
 import { AuthConfig, ConfigInjectionToken } from './config/auth-config.type';
 import { SupertokensService } from './supertokens.service';
 
 @Module({
-  imports: [],
-  providers: [],
+  imports: [UserModule],
+  providers: [UserService],
   exports: [],
   controllers: [],
 })
