@@ -1,7 +1,7 @@
 codecov:
   bot: "codecov-io"
   strict_yaml_branch: "main" # or your default branch
-  require_ci_to_pass: no # set to no for testing
+  require_ci_to_pass: yes
   notify:
     after_n_builds: 1 # check immediately for testing
     wait_for_ci: yes
@@ -26,10 +26,12 @@ coverage:
         if_ci_failed: error
     patch:
       default:
-        informational: true
+        informational: false
         target: 70%
         threshold: 5%
-    changes: false
+        if_ci_failed: error
+        if_coverage_below: error
+    changes: true
 
 github_checks:
   annotations: true
@@ -46,6 +48,6 @@ parsers:
 
 comment:
   layout: header, diff
-  require_changes: false
+  require_changes: true
   behavior: default
   after_n_builds: 1 # check immediately for testing
