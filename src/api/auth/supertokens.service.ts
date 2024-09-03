@@ -26,7 +26,6 @@ export class SupertokensService {
     private readonly userService: UserService,
   ) {
     supertokens.init({
-      debug: true,
       appInfo: config.appInfo,
       supertokens: {
         connectionURI: config.connectionURI,
