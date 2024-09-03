@@ -18,6 +18,7 @@ export class UserService {
 
   async findOneByExternalId(externalId: string): Promise<UserResDto> {
     assert(externalId, 'id is required');
+    this.logger.log('Fetching user by external id: ' + externalId);
     const user = await this.userRepository.findOneByOrFail({ externalId });
     if (user.isSuspended) {
       throw new ValidationException(ErrorCode.E0001);

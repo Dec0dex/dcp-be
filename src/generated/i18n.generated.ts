@@ -26,6 +26,7 @@ export type I18nTranslations = {
             "not_found": string;
             "invalid_password": string;
             "invalid_token": string;
+            "suspended": string;
         };
     };
 };
