@@ -89,7 +89,7 @@ export const ApiAuth = (options: IApiAuthOptions = {}): MethodDecorator => {
     description: options?.description ?? 'OK',
     paginationType: options.paginationType || 'offset',
   };
-  const auths = options.auths || ['jwt'];
+  const auths = options.auths || ['oauth2'];
 
   const errorResponses = (options.errorResponses || defaultErrorResponses)?.map(
     (statusCode) =>

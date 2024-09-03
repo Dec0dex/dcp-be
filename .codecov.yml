@@ -12,6 +12,10 @@ ignore:
   - "src/database/seeds/**"
   - "src/generated/**"
   - "**/*.module.ts"
+  - "**/*.constant.ts"
+  - "**/*.constants.ts"
+  - "**/*.dto.ts"
+  - "**/*.entity.ts"
 
 coverage:
   precision: 2

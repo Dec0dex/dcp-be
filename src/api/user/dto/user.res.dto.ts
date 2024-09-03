@@ -1,10 +1,14 @@
 // import { WrapperType } from '@/common/types/types';
+import { WrapperType } from '@/common/types/types';
 import {
+  BooleanField,
   ClassField,
   StringField,
   StringFieldOptional,
 } from '@/decorators/field.decorators';
 import { Exclude, Expose } from 'class-transformer';
+import { EmailResDto } from './email.res.dto';
+import { PhoneNumberResDto } from './phone-number.res.dto';
 
 @Exclude()
 export class UserResDto {
@@ -14,23 +18,43 @@ export class UserResDto {
 
   @StringField()
   @Expose()
-  username: string;
-
-  @StringField()
-  @Expose()
-  email: string;
+  profileTag: string;
 
   @StringFieldOptional()
   @Expose()
   bio?: string;
 
-  @StringField()
+  @StringFieldOptional()
   @Expose()
-  image: string;
+  profileIcon?: string;
 
-  //   @ClassField(() => PostResDto)
-  //   @Expose()
-  //   posts?: WrapperType<PostResDto[]>;
+  @StringFieldOptional()
+  @Expose()
+  backgroundImage?: string;
+
+  @StringFieldOptional()
+  @Expose()
+  firstName?: string;
+
+  @StringFieldOptional()
+  @Expose()
+  lastName?: string;
+
+  @BooleanField()
+  @Expose()
+  isSuspended: boolean;
+
+  @BooleanField()
+  @Expose()
+  needsEnrollment: boolean;
+
+  @ClassField(() => PhoneNumberResDto)
+  @Expose()
+  phoneNumbers?: WrapperType<PhoneNumberResDto[]>;
+
+  @ClassField(() => EmailResDto)
+  @Expose()
+  emails?: WrapperType<EmailResDto[]>;
 
   @ClassField(() => Date)
   @Expose()

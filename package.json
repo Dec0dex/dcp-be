@@ -97,6 +97,7 @@
     "prettier": "^3.3.3",
     "prettier-plugin-organize-imports": "^4.0.0",
     "source-map-support": "^0.5.21",
+    "sqlite3": "^5.1.7",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.4",
     "ts-loader": "^9.5.1",

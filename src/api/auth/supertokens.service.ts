@@ -23,7 +23,7 @@ import { AuthConfig, ConfigInjectionToken } from './config/auth-config.type';
 export class SupertokensService {
   constructor(
     @Inject(ConfigInjectionToken) config: AuthConfig,
-    @Inject() userService: UserService,
+    private readonly userService: UserService,
   ) {
     supertokens.init({
       appInfo: config.appInfo,
