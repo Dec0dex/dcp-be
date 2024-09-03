@@ -11,8 +11,8 @@
     },
     "collectCoverageFrom": [
       "**/*.(t|j)s",
-      "**/*.dto.(t|j)s",
-      "**/*.entity.(t|j)s",
+      "!**/*.dto.(t|j)s",
+      "!**/*.entity.(t|j)s",
       "!**/*.spec.(t|j)s",
       "!**/*.constan(t|ts).(t|j)s",
       "!src/database/migrations/**",
