@@ -203,8 +203,8 @@ export class SupertokensService {
               }
             }
             return {
-              shouldAutomaticallyLink: true,
-              shouldRequireVerification: true,
+              shouldAutomaticallyLink: false, //TODO: Buy feature
+              shouldRequireVerification: false, //TODO: Buy feature
             };
           },
           onAccountLinked: async (
