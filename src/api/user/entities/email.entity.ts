@@ -6,4 +6,9 @@ export class Email {
 
   @Column({ default: false })
   isPrimary: boolean;
+
+  constructor(email: string, isPrimary: boolean) {
+    this.email = email;
+    this.isPrimary = isPrimary;
+  }
 }

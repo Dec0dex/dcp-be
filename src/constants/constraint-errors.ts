@@ -1,4 +1,4 @@
 export const constraintErrors: Record<string, string> = Object.freeze({
-  UQ_user_username: 'error.unique.username',
-  UQ_user_email: 'error.unique.email',
+  UQ_user_external_id: 'error.unique.externalId',
+  UQ_user_profile_tag: 'error.unique.profileTag',
 });

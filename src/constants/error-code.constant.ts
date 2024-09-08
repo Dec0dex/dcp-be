@@ -12,4 +12,5 @@ export enum ErrorCode {
 
   // Errors
   E0001 = 'user.error.suspended',
+  E0002 = 'user.error.already_exists',
 }

@@ -11,6 +11,8 @@ import {
   SupertokensService,
   addRoleToUser,
   addRolesAndPermissionsToSession,
+  createLocalUser,
+  hasUserWithExternalId,
 } from './supertokens.service';
 
 // Mock supertokens-node
@@ -29,8 +31,10 @@ jest.mock('supertokens-node/recipe/session', () => ({
 }));
 
 // Mock user.service
-export const mockUserService = {
+const mockUserService = {
   // Define mock methods and properties
+  findOneByExternalId: jest.fn(),
+  create: jest.fn(),
 };
 
 describe('SupertokensService', () => {
@@ -226,6 +230,54 @@ describe('SupertokensService', () => {
       await addRolesAndPermissionsToSession(undefined as any);
 
       expect(mockSession.fetchAndSetClaim).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('createLocalUser', () => {
+    it('should not create local user', async () => {
+      mockUserService.findOneByExternalId.mockResolvedValue({});
+      await createLocalUser(
+        { id: 'someUserId', emails: [], phoneNumbers: [] },
+        mockUserService as any,
+      );
+
+      expect(mockUserService.create).not.toHaveBeenCalled();
+    });
+
+    it('should create local user', async () => {
+      mockUserService.findOneByExternalId.mockRejectedValue({});
+      const userToCreate = { id: 'someUserId', emails: [], phoneNumbers: [] };
+      await createLocalUser(userToCreate, mockUserService as any);
+
+      expect(mockUserService.create).toHaveBeenCalledWith(userToCreate);
+    });
+  });
+
+  describe('hasUserWithExternalId', () => {
+    it('should return true', async () => {
+      mockUserService.findOneByExternalId.mockResolvedValue({});
+      const result = await hasUserWithExternalId(
+        'someUserId',
+        mockUserService as any,
+      );
+
+      expect(mockUserService.findOneByExternalId).toHaveBeenCalledWith(
+        'someUserId',
+      );
+      expect(result).toBe(true);
+    });
+
+    it('should return false', async () => {
+      mockUserService.findOneByExternalId.mockRejectedValue({});
+      const result = await hasUserWithExternalId(
+        'someUserId',
+        mockUserService as any,
+      );
+
+      expect(mockUserService.findOneByExternalId).toHaveBeenCalledWith(
+        'someUserId',
+      );
+      expect(result).toBe(false);
     });
   });
 });

@@ -15,18 +15,16 @@ export type I18nTranslations = {
     };
     "user": {
         "unique": {
-            "username": string;
-            "email": string;
+            "externalId": string;
+            "profileTag": string;
         };
         "validation": {
             "is_empty": string;
         };
         "error": {
-            "username_or_email_exists": string;
             "not_found": string;
-            "invalid_password": string;
-            "invalid_token": string;
             "suspended": string;
+            "already_exists": string;
         };
     };
 };
