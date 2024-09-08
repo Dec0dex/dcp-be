@@ -93,22 +93,19 @@ export class SupertokensService {
                         response.user.loginMethods.length === 1
                       ) {
                         // Post sign up logic
-                        createLocalUser(
-                          {
-                            id,
-                            emails,
-                            phoneNumbers,
-                            firstName,
-                            lastName,
-                          },
-                          userService,
-                        );
                         addRoleToUser(response.user.id);
-                        addRolesAndPermissionsToSession(input.session);
-                      } else {
-                        // TODO: Post signup
-                        addRolesAndPermissionsToSession(input.session);
                       }
+                      addRolesAndPermissionsToSession(input.session);
+                      createLocalUser(
+                        {
+                          id,
+                          emails,
+                          phoneNumbers,
+                          firstName,
+                          lastName,
+                        },
+                        userService,
+                      );
                     }
                   }
 
@@ -252,7 +249,7 @@ export async function addRolesAndPermissionsToSession(
   await session?.fetchAndSetClaim(PermissionClaim);
 }
 
-async function createLocalUser(
+export async function createLocalUser(
   user: {
     id: string;
     emails: string[];
@@ -262,13 +259,21 @@ async function createLocalUser(
   },
   userService: UserService,
 ) {
-  //TODO: Implement
+  const isLocalUserPresent = await hasUserWithExternalId(user.id, userService);
+  if (isLocalUserPresent) {
+    return;
+  }
+  await userService.create(user);
 }
 
-async function hasUserWithExternalId(
+export async function hasUserWithExternalId(
   userId: string,
   userService: UserService,
 ): Promise<boolean> {
-  // TODO: add your own implementation here.
-  return false;
+  try {
+    await userService.findOneByExternalId(userId);
+    return true;
+  } catch (e) {
+    return false;
+  }
 }
