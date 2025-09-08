@@ -88,7 +88,7 @@
     "@vuepress/plugin-search": "^2.0.0-rc.41",
     "@vuepress/theme-default": "^2.0.0-rc.41",
     "env-cmd": "^10.1.0",
-    "eslint": "^9.9.0",
+    "eslint": "^9.35.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.4",
